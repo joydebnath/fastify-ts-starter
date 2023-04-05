@@ -1,5 +1,4 @@
 # Fastify Starter
----
 
 This repository contains a Fastify starter project using TypeScript and Drizzle ORM, with a simple Docker setup to run the server. The purpose of this starter is to provide you with a quick and easy way to start building your Fastify-based applications with a solid foundation.
 
