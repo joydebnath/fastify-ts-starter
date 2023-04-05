@@ -1,0 +1,12 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1680703530293,
+      "tag": "0000_big_malcolm_colcord"
+    }
+  ]
+}

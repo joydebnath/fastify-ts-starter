@@ -1,0 +1,48 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/app
+    ports:
+      - '${APP_PORT:-8080}:3000'
+    depends_on:
+      - db
+    networks:
+      - drizzle-net
+
+  db:
+    image: mariadb:latest
+    volumes:
+      - drizzle-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD:-supersecret}'
+      MYSQL_DATABASE: '${DB_DATABASE:-test}'
+      MYSQL_USER: '${DB_USER:-admin}'
+      MYSQL_PASSWORD: '${DB_PASSWORD:-secret}'
+      MYSQL_ROOT_HOST: '${DB_HOST}'
+    ports:
+      - '${HOST_DB_PORT:-3360}:3306'
+    networks:
+      - drizzle-net
+    healthcheck:
+        test:
+            - CMD
+            - mysqladmin
+            - ping
+            - '-p${DB_ROOT_PASSWORD}'
+        retries: 3
+        timeout: 5s
+
+
+networks:
+  drizzle-net:
+    driver: bridge
+
+volumes:
+  drizzle-data:
+    driver: local
+
