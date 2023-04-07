@@ -1,7 +1,7 @@
 {
-  "name": "drizzle-orm",
+  "name": "fastify-ts-starter",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "description": " A Fastify starter project using TypeScript and Drizzle ORM.",
   "main": "app.ts",
   "directories": {
     "test": "test"
